@@ -11,7 +11,7 @@ app.use("/", require("./routes"));
 // require("./models");
 // TODO: Database connection promisify
 app.get("/", (req, res) => {
-    return res.send("built for bon voyage 🛳️");
+    return res.send("built for bon voyage hackathon 🛳️");
 });
 
 const PORT = process.env.PORT || 5000;
