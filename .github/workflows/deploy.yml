@@ -19,3 +19,4 @@ jobs:
           cd code/traval
           git pull origin master
           cd backend/
+          pm2 restart server
