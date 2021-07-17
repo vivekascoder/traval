@@ -1,0 +1,23 @@
+{
+  "name": "traval-backend",
+  "version": "1.0.0",
+  "description": "backend for traval.biz",
+  "main": "index.js",
+  "author": "rishi.cp01@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "@vitalets/google-translate-api": "^7.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "sequelize": "^6.6.5",
+    "sequelize-cockroachdb": "^6.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
