@@ -12,7 +12,7 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: traval.divcorn.com
-        username: vivekascoder
+        username: travalvm
         key: ${{ secrets.PRIVATE_KEY }}
         post: 22
         script: |
