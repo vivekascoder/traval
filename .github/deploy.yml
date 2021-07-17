@@ -1,0 +1,21 @@
+name: Deploy Using SSH.
+on: 
+  push:
+    branches: [ master ]
+
+jobs: 
+  job_deploy:
+    name: Job Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build and Deploy the Project.
+      uses: appleboy/ssh-action@master
+      with:
+        host: traval.divcorn.com
+        username: vivekascoder
+        key: ${{ secrets.PRIVATE_KEY }}
+        post: 22
+        script: |
+          cd code/traval
+          git pull origin master
+          cd backend/
