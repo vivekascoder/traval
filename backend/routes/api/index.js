@@ -1,5 +1,10 @@
 const router = require("express").Router();
-const { translatePost, translateGet } = require("../../controllers/api");
+const {
+    translatePost,
+    translateGet,
+    languagePost,
+    sentencesGet,
+} = require("../../controllers/api");
 
 router.get("/ping", (req, res) => {
     res.json({
@@ -8,7 +13,9 @@ router.get("/ping", (req, res) => {
     });
 });
 
-router.get("/translate", translateGet);
+router.get("/sentences", sentencesGet);
+router.post("/language", languagePost);
+// router.get("/translate", translateGet);
 router.post("/translate", translatePost);
 
 module.exports = router;
