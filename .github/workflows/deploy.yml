@@ -19,4 +19,6 @@ jobs:
           cd code/traval
           git pull origin master
           cd backend/
+          rm -rf node_modules/
+          yarn
           pm2 restart server
