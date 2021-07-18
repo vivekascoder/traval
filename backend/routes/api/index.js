@@ -15,7 +15,7 @@ router.get("/ping", (req, res) => {
 
 router.get("/sentences", sentencesGet);
 router.post("/language", languagePost);
-router.get("/translate", translateGet);
+// router.get("/translate", translateGet);
 router.post("/translate", translatePost);
 
 module.exports = router;

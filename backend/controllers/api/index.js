@@ -17,8 +17,8 @@ const translateGet = async (req, res) => {
 };
 
 const translatePost = async (req, res) => {
-    const { speech, targetLanguage } = req.body;
-
+    let { speech, targetLanguage, country } = req.body;
+    targetLanguage = await languagePostService(country);
     try {
         const translationResult = await translate(speech, {
             to: targetLanguage,
@@ -52,6 +52,11 @@ const languagePost = async (req, res) => {
             msg: err.message,
         });
     }
+};
+
+const languagePostService = async (country) => {
+    let language = await getNativeLanguageCode(country);
+    return language;
 };
 
 const sentencesGet = async (req, res) => {
