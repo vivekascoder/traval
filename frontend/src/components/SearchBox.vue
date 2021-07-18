@@ -1,7 +1,8 @@
 <template>
-  <form 
-    @submit.prevent="$emit('submitForm')" 
-    class="bg-white flex items-center rounded-lg shadow">
+  <form
+    @submit.prevent="$emit('submitForm')"
+    class="bg-white flex items-center rounded-lg shadow relative"
+  >
     <input
       class="
         rounded-l-full
@@ -17,7 +18,27 @@
       id="search"
       type="text"
       placeholder="Search"
+      required
+      autocomplete="off"
     />
+    <div
+      v-if="value"
+      class="
+        absolute
+        top-full
+        left-0
+        right-0
+        bg-white
+        rounded-md
+        shadow-md
+        max-h-40
+        overflow-y-scroll
+      "
+    >
+      <div class="px-4 py-2 cursor-pointer" v-for="item in getMatchedValue" :key="item" @click="value=item">
+        {{ item }}
+      </div>
+    </div>
 
     <div class="p-4">
       <button
@@ -49,7 +70,6 @@
       </button>
     </div>
   </form>
-
 </template>
 
 <script>
@@ -57,9 +77,24 @@ export default {
   props: {
     value: {
       type: String,
-      default: ''
-    }
-  }
+      default: "",
+    },
+    data: {
+      type: Array,
+      required: true,
+    },
+  },
+  computed: {
+    getMatchedValue() {
+      let matches = [];
+      this.data.forEach((element) => {
+        if (element.includes(this.value) && element !== this.value) {
+          matches.push(element);
+        }
+      });
+      return matches
+    },
+  },
 };
 </script>
 

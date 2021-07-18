@@ -6,7 +6,7 @@ import './assets/tailwind.css'
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'http://traval.divcorn.com',
+  baseURL: 'http://bd358a90ecee.ngrok.io/api/',
 })
 
 createApp(App).use(store).use(router).mount('#app')

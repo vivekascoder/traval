@@ -8,6 +8,7 @@ async function getNativeLanguageCode(countryName) {
     let languages = response.data[0].languages;
     if (languages.length > 1)
         languages = languages.filter((lan) => lan.iso639_2 !== "eng");
+    console.log(languages);
     let language = languages[0].iso639_1;
     return language;
 }
@@ -18,12 +19,13 @@ const translateGet = async (req, res) => {
 
 const translatePost = async (req, res) => {
     let { speech, targetLanguage, country } = req.body;
-    targetLanguage = await languagePostService(country);
     try {
+    targetLanguage = await languagePostService(country);
         const translationResult = await translate(speech, {
             to: targetLanguage,
         });
-        console.log(translationResult);
+
+        
         return res.status(200).json({
             ok: true,
             originalText: translationResult.text,
@@ -33,7 +35,7 @@ const translatePost = async (req, res) => {
         console.log(err.message);
         return res.status(500).json({
             ok: false,
-            message: "some error occured! try some time later.",
+          message: "some error occured! try some time later.",
         });
     }
 };
